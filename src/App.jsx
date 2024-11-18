@@ -14,10 +14,22 @@ const infoObject = {
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque illo voluptate perspiciatis esse fugit beatae, suscipit facilis possimus cum adipisci corporis, sint consectetur aliquid maiores rerum sunt debitis ipsum quae.",
 };
 
+const educObject = {
+  id: 0,
+  school: "Vysoká škola ekonomická v Praze",
+  program: "Finance",
+  yearStart: "2018",
+  yearEnd: "2023",
+  description:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe totam ad possimus! Modi ipsum deleniti sapiente ullam eveniet perspiciatis, neque fugit blanditiis unde amet culpa quam eaque nobis illum? Voluptatem!",
+};
+
 // Application being put together
 
 export default function App() {
+  const [eduId, setEduId] = useState(1);
   const [personalInfo, setPersonalInfo] = useState(infoObject);
+  const [education, setEducation] = useState([educObject]);
 
   function setName(e) {
     return setPersonalInfo({ ...personalInfo, name: e.target.value });
@@ -43,6 +55,37 @@ export default function App() {
     return setPersonalInfo({ ...personalInfo, adressTwo: e.target.value });
   }
 
+  function addEducation() {
+    const school = document.getElementById("school");
+    const program = document.getElementById("program");
+    const yearStart = document.getElementById("eduStart");
+    const yearEnd = document.getElementById("eduEnd");
+    const description = document.getElementById("description");
+
+    setEducation([
+      ...education,
+      {
+        id: eduId,
+        school: school.value,
+        program: program.value,
+        yearStart: yearStart.value,
+        yearEnd: yearEnd.value,
+        description: description.value,
+      },
+    ]);
+
+    setEduId(eduId + 1);
+    school.value = "";
+    program.value = "";
+    yearStart.value = "";
+    yearEnd.value = "";
+    description.value = "";
+
+    return;
+  }
+
+  function deleteEducation() {}
+
   return (
     <>
       <div className="controls">
@@ -55,6 +98,11 @@ export default function App() {
           setAdressone={setAdressone}
           setAdresstwo={setAdresstwo}
         />
+        <h2 className="controlHead">Education</h2>
+        <EducationControls addEducation={addEducation} />
+        <div className="itemsControl">
+          <EducationControlsDivs education={education} />
+        </div>
       </div>
       <div className="board">
         <div className="cv">
@@ -68,6 +116,9 @@ export default function App() {
               }
               paragraph={personalInfo.paragraph}
             />
+          </div>
+          <div className="education">
+            <CvEducation education={education} />
           </div>
         </div>
       </div>
@@ -87,7 +138,7 @@ function PersonalInfoControls({
 }) {
   return (
     <>
-      <div className="personalInfoControls">
+      <div className="controlsSection">
         <label>
           Your name
           <input onChange={setName}></input>
@@ -116,6 +167,37 @@ function PersonalInfoControls({
   );
 }
 
+function EducationControls({ addEducation }) {
+  return (
+    <>
+      <div className="controlsSection">
+        <label>
+          School Name
+          <input id="school"></input>
+        </label>
+        <label>
+          Program
+          <input id="program"></input>
+        </label>
+        <label>
+          Description
+          <textarea id="description"></textarea>
+        </label>
+        <label>
+          Starting Year
+          <input id="eduStart"></input>
+        </label>
+        <label>
+          Ending Year
+          <input id="eduEnd"></input>
+        </label>
+
+        <button onClick={addEducation}>Add</button>
+      </div>
+    </>
+  );
+}
+
 function CvInfo({ name, phone, email, contactAdress, paragraph }) {
   return (
     <>
@@ -129,4 +211,34 @@ function CvInfo({ name, phone, email, contactAdress, paragraph }) {
       </div>
     </>
   );
+}
+
+function CvEducation({ education }) {
+  const educationarray = education.map((item, index) => {
+    console.log(item);
+    return (
+      <div key={index} className="educationItem">
+        <h5>{item.yearStart + "-" + item.yearEnd}</h5>
+        <h2>{item.school}</h2>
+        <h3>{item.program}</h3>
+        <p>{item.description}</p>
+      </div>
+    );
+  });
+
+  return <>{educationarray}</>;
+}
+
+function EducationControlsDivs({ education }) {
+  const educationarray = education.map((item, index) => {
+    return (
+      <div key={index} className="educationItemControls">
+        <h4>{item.school}</h4>
+
+        <button className="educationDelete">❌</button>
+      </div>
+    );
+  });
+
+  return <>{educationarray}</>;
 }
