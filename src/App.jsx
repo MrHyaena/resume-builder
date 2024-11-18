@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 
+// Data for testing
+
 const infoObject = {
   name: "Martin",
   surname: "Dolezal",
@@ -12,14 +14,47 @@ const infoObject = {
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque illo voluptate perspiciatis esse fugit beatae, suscipit facilis possimus cum adipisci corporis, sint consectetur aliquid maiores rerum sunt debitis ipsum quae.",
 };
 
+// Application being put together
+
 export default function App() {
   const [personalInfo, setPersonalInfo] = useState(infoObject);
+
+  function setName(e) {
+    return setPersonalInfo({ ...personalInfo, name: e.target.value });
+  }
+
+  function setSurname(e) {
+    return setPersonalInfo({ ...personalInfo, surname: e.target.value });
+  }
+
+  function setEmail(e) {
+    return setPersonalInfo({ ...personalInfo, email: e.target.value });
+  }
+
+  function setPhone(e) {
+    return setPersonalInfo({ ...personalInfo, phone: e.target.value });
+  }
+
+  function setAdressone(e) {
+    return setPersonalInfo({ ...personalInfo, adressOne: e.target.value });
+  }
+
+  function setAdresstwo(e) {
+    return setPersonalInfo({ ...personalInfo, adressTwo: e.target.value });
+  }
 
   return (
     <>
       <div className="controls">
         <h1 className="controlHead">Make your CV!</h1>
-        <PersonalInfoControls />
+        <PersonalInfoControls
+          setName={setName}
+          setSurname={setSurname}
+          setEmail={setEmail}
+          setPhone={setPhone}
+          setAdressone={setAdressone}
+          setAdresstwo={setAdresstwo}
+        />
       </div>
       <div className="board">
         <div className="cv">
@@ -40,37 +75,41 @@ export default function App() {
   );
 }
 
-function PersonalInfoControls() {
+// Header information + controls
+
+function PersonalInfoControls({
+  setName,
+  setSurname,
+  setEmail,
+  setPhone,
+  setAdressone,
+  setAdresstwo,
+}) {
   return (
     <>
       <div className="personalInfoControls">
         <label>
           Your name
-          <input
-            value={personalInfo.name}
-            onChange={(e) =>
-              setPersonalInfo({ ...personalInfo, name: e.target.value })
-            }
-          ></input>
+          <input onChange={setName}></input>
         </label>
         <label>
           Your surname
-          <input></input>
+          <input onChange={setSurname}></input>
         </label>
         <label>
           Email
-          <input></input>
+          <input onChange={setEmail}></input>
         </label>
         <label>
           Phone
-          <input></input>
+          <input onChange={setPhone}></input>
         </label>
         <label>
           Adress line
-          <input></input>
+          <input onChange={setAdressone}></input>
         </label>
         <label>
-          Adress line 2<input></input>
+          Adress line 2<input onChange={setAdresstwo}></input>
         </label>
       </div>
     </>
