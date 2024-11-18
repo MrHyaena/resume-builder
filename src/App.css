@@ -1,0 +1,76 @@
+body {
+  --color-one: rgb(25, 23, 32);
+  --color-two: rgb(67, 64, 75);
+  --cv-one: rgb(17, 17, 26);
+}
+
+.board {
+  background-color: var(--color-two);
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.cv {
+  width: 40vw;
+  min-height: 80vh;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cvHeader {
+  background-color: var(--cv-one);
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  color: white;
+  padding: 20px;
+  gap: 20px;
+}
+
+.photo {
+  height: 200px;
+  width: 100%;
+  background-color: rgb(189, 189, 189);
+  border-radius: 10px;
+}
+
+.cvHeader h1 {
+  margin: 0px;
+}
+
+/* Controls panel */
+
+.controls {
+  color: white;
+  padding: 20px;
+  background-color: var(--color-one);
+}
+
+.controls h1 {
+  text-align: center;
+}
+
+.controls div {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px black;
+}
+
+.personalInfoControls {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--color-two);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border-radius: 5px;
+  border: none;
+  min-height: 20px;
+}
