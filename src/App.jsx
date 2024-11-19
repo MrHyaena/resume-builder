@@ -406,8 +406,8 @@ function WorkControls({ addWork, open, setOpen }) {
   } else if (open == 3) {
     return (
       <>
-        <div className="controlsSection">
-          <h2 className="controlHead">Work eperience</h2>
+        <div className="headerSection">
+          <h2 className="controlHead">Work experience</h2>
           <button
             id="eduBtn"
             onClick={() => {
