@@ -224,9 +224,11 @@ export default function App() {
             />
           </div>
           <div className="education">
+            <h3 className="cvSectionHeading">Education</h3>
             <CvEducation education={education} />
           </div>
           <div className="education">
+            <h3 className="cvSectionHeading">Work Experience</h3>
             <CvWork work={work} />
           </div>
         </div>

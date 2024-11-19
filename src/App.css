@@ -41,8 +41,13 @@ body {
   box-shadow: 0px 0px 10px black;
 }
 
+.cvSectionHeading {
+  background-color: rgb(231, 231, 231);
+  text-align: center;
+  padding: 5px;
+}
+
 .education {
-  border-bottom: 1px solid rgb(211, 211, 211);
   color: black;
   padding: 20px;
 }
