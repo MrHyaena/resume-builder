@@ -1,7 +1,8 @@
 body {
   --color-one: rgb(38, 35, 51);
   --color-two: rgb(67, 64, 75);
-  --color-three: rgb(110, 121, 146);
+  --color-three: rgb(10, 15, 27);
+  --hover-button: green;
   --cv-one: rgb(18, 17, 29);
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -14,18 +15,36 @@ body {
   justify-content: start;
   align-items: center;
   flex-direction: column;
+  gap: 20px;
 }
 
-.cv {
-  width: 600px;
-  background-color: white;
+.board button {
+  padding: 20px 40px;
+  background-color: var(--color-three);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 0px 5px black;
+}
 
+.board button:hover {
+  background-color: var(--hover-button);
+}
+
+#cv {
+  background-color: white;
+  max-width: 80vh;
+  min-height: 100vh;
   overflow: hidden;
   box-shadow: 0px 0px 10px black;
 }
 
 .education {
   border-bottom: 1px solid rgb(211, 211, 211);
+  color: black;
+  padding: 20px;
 }
 
 .educationItem:not(:last-child) {
@@ -41,7 +60,7 @@ body {
   display: grid;
   grid-template-columns: 2fr 5fr;
   color: white;
-  padding: 20px;
+  padding: 40px;
   gap: 20px;
   align-items: center;
 }
@@ -62,11 +81,6 @@ body {
 }
 
 /* Education CV */
-
-.education {
-  color: black;
-  padding: 20px;
-}
 
 .educationItem {
   display: flex;
@@ -125,10 +139,14 @@ body {
   font-weight: bold;
   border-radius: 10px;
   border: none;
-  box-shadow: 0px 0px 5px rgb(73, 73, 73);
+  box-shadow: 0px 0px 5px rgb(0, 0, 0);
   align-self: center;
   background-color: var(--color-three);
   color: white;
+}
+
+.headerSection button:hover {
+  background-color: var(--hover-button);
 }
 
 .itemsControl {

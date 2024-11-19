@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import html2pdf from "html2pdf.js";
+
 import "./App.css";
+
+import { jsPDF } from "jspdf";
 
 // Data for testing
 
@@ -37,6 +41,26 @@ const workObject = {
 // Application being put together
 
 export default function App() {
+  function download() {
+    let element = document.getElementById("cv");
+
+    let opt = {
+      margin: 0,
+      filename: "myfile.pdf",
+      image: { type: "jpeg", quality: 1 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
+
+    let pdf = html2pdf().set(opt).from(element.innerHTML).outputImg();
+    pdf.then(() => {
+      setTimeout(() => {
+        pdf.save();
+      }, 5000);
+    });
+
+    html2pdf(pdf, opt);
+  }
+
   const [personalInfo, setPersonalInfo] = useState(infoObject);
 
   const [eduId, setEduId] = useState(1);
@@ -186,7 +210,8 @@ export default function App() {
         </div>
       </div>
       <div className="board">
-        <div className="cv">
+        <button onClick={download}>Download</button>
+        <div id="cv">
           <div className="cvHeader">
             <CvInfo
               name={personalInfo.name + " " + personalInfo.surname}
