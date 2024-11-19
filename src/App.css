@@ -1,22 +1,37 @@
 body {
-  --color-one: rgb(25, 23, 32);
+  --color-one: rgb(38, 35, 51);
   --color-two: rgb(67, 64, 75);
-  --cv-one: rgb(17, 17, 26);
+  --color-three: rgb(110, 121, 146);
+  --cv-one: rgb(18, 17, 29);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .board {
   background-color: var(--color-two);
   padding: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
 }
 
 .cv {
-  width: 40vw;
-  min-height: 80vh;
+  width: 600px;
   background-color: white;
-  border-radius: 10px;
+
   overflow: hidden;
+  box-shadow: 0px 0px 10px black;
+}
+
+.education {
+  border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.educationItem:not(:last-child) {
+  border-bottom: 1px dotted black;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* Header CV */
@@ -40,6 +55,10 @@ body {
 
 .cvHeader h1 {
   margin: 0px;
+}
+
+.cvHeader h4 {
+  margin: 5px;
 }
 
 /* Education CV */
@@ -90,13 +109,26 @@ body {
   border-radius: 10px;
 }
 
-.controlsSection {
+.headerSection {
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   background-color: var(--color-two);
   box-shadow: 0px 0px 10px black;
+  margin-top: 40px;
+}
+
+.headerSection button {
+  padding: 20px 40px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 0px 5px rgb(73, 73, 73);
+  align-self: center;
+  background-color: var(--color-three);
+  color: white;
 }
 
 .itemsControl {
@@ -113,7 +145,13 @@ label {
 input {
   border-radius: 5px;
   border: none;
-  min-height: 20px;
+  min-height: 25px;
+}
+
+textarea {
+  min-height: 40px;
+  border-radius: 5px;
+  border: none;
 }
 
 textarea {
